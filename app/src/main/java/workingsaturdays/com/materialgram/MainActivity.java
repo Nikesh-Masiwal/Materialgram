@@ -71,7 +71,26 @@ public class MainActivity extends AppCompatActivity implements FeedAdapter.OnFee
 
 
     private void setupFeed() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this){
+
+            /**
+             * <p>Returns the amount of extra space that should be laid out by LayoutManager.
+             * By default, {@link LinearLayoutManager} lays out 1 extra page of
+             * items while smooth scrolling and 0 otherwise. You can override this method to implement your
+             * custom layout pre-cache logic.</p>
+             * <p>Laying out invisible elements will eventually come with performance cost. On the other
+             * hand, in places like smooth scrolling to an unknown location, this extra content helps
+             * LayoutManager to calculate a much smoother scrolling; which improves user experience.</p>
+             * <p>You can also use this if you are trying to pre-layout your upcoming views.</p>
+             *
+             * @param state
+             * @return The extra space that should be laid out (in pixels).
+             */
+            @Override
+            protected int getExtraLayoutSpace(RecyclerView.State state) {
+                return 700;
+            }
+        };
         rvFeed.setLayoutManager(linearLayoutManager);
         feedAdapter = new FeedAdapter(this);
         feedAdapter.setOnFeedItemClickListener(this);
@@ -121,6 +140,12 @@ public class MainActivity extends AppCompatActivity implements FeedAdapter.OnFee
     @Override
     public void onCommentsClick(View v, int position) {
         final Intent intent = new Intent(this, CommentsActivity.class);
+
+
+        //Get location on screen
+        int[] startingLocation = new int[2];
+        v.getLocationOnScreen(startingLocation);
+        intent.putExtra(CommentsActivity.ARG_DRAWING_START_LOCATION,startingLocation[1]);
         startActivity(intent);
         //Disable enter transition for new Acitvity
         overridePendingTransition(0, 0);

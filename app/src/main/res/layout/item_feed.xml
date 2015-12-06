@@ -50,7 +50,7 @@
         <workingsaturdays.com.materialgram.view.SquaredImageView
             android:id="@+id/ivFeedCenter"
             android:layout_width="match_parent"
-            tools:src="@drawable/ic_feed_center1"
+            tools:src="@drawable/ic_feed_center11"
             android:layout_height="wrap_content" />
 
         <ImageView

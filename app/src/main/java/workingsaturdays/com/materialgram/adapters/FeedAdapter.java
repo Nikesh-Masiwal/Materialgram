@@ -59,12 +59,12 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> i
 
         if (position % 2 == 0){
 
-            feedViewHolder.ivFeedCenter.setImageResource(R.drawable.ic_feed_center1);
+            feedViewHolder.ivFeedCenter.setImageResource(R.drawable.ic_feed_center11);
             feedViewHolder.ivFeedBottom.setImageResource(R.drawable.img_feed_bottom_1);
 
         }else {
 
-            feedViewHolder.ivFeedCenter.setImageResource(R.drawable.ic_feed_center2);
+            feedViewHolder.ivFeedCenter.setImageResource(R.drawable.ic_feed_center12);
             feedViewHolder.ivFeedBottom.setImageResource(R.drawable.img_feed_bottom_2);
 
         }
